@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "shapefinder"
+version = "0.1.0"
+description = ""
+authors = ["Lukas Marti <lukas.marti@stud.fhgr.ch>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

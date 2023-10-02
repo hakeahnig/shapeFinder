@@ -9,6 +9,8 @@ readme = "README.md"
 python = ">=3.10,<3.13"
 numpy = "^1.26.0"
 opencv-python = "^4.8.0.76"
+DateTime = "^5.2"
+matplotlib = "^3.8.0"
 
 
 [build-system]

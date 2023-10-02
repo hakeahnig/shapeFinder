@@ -1,1 +1,3 @@
-import numpy as numpy
+#Main programm
+
+

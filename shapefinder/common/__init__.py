@@ -1,6 +1,3 @@
-import sys
-sys.path.insert(0,"/home/madame/Documents/Semester 5/SOFENG/Project_1/shapeFinder/shapefinder/common")
-
 #Importing Classes
 from color_detector import color_detector
 from rtVisualization import visualize

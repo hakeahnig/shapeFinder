@@ -43,9 +43,8 @@ class visualize:
                 cv2.putText(image, "Circle", coords, self.font, 2, self.colour, 2)
                 log.log_to_csv(self.time, None, "CIRCLE")
 
-        cv2.imshow("shapes_detected", image)
+        #cv2.imshow("shapes_detected", image)
 
-  
     def draw_contours(self, image, contours):
         for i, contour in enumerate(contours):
             if i == 0:
@@ -53,7 +52,7 @@ class visualize:
             
             cv2.drawContours(image, [contour], 0, (255, 0, 0), 8)
 
-        cv2.imshow("Contours", image)
+        #cv2.imshow("Contours", image)
   
     """def put_color_text(self, contours, color, label):
         image = cv2.imread(self.image_path)
@@ -61,8 +60,7 @@ class visualize:
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
          """
-        
-      
+           
     def combine_images(self, contours):
         #Combines images, maybe do logging here
 

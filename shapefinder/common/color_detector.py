@@ -1,14 +1,13 @@
 import numpy as np
 import cv2
 
-class detector:
+class color_detector:
     def __init__(self, image_path, font=cv2.FONT_HERSHEY_DUPLEX, colour=(0,255,0)):
         self.image_path = image_path
         self.font = font
         self.colour = colour
 
-    def read_imae(self, cam_port):
-
+    def read_image(self, cam_port):
         cam = cv2.VideoCapture(cam_port)
         while True:
             ret, image = cam.read()
@@ -29,7 +28,7 @@ class detector:
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
         # Create a blank image with the same dimensions as the original image
-        image_with_text = image.copy()
+        hsv_image = image.copy()
 
         #Color Definition
         #RED
@@ -96,23 +95,5 @@ class detector:
         return color_contour_array, color_names"""
         
 
-    def shape_recognition(self):
-        #Reads image and is looking for contours, maybe without return value, self??
-        image = cv2.imread(self.image_path)
-
-        #Gray conversion
-        grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        #Threshold
-        _, threshold_image = cv2.threshold(grayscale_image, 210, 255, 0)
-
-        #Getting contours
-        contours, hierachy = cv2.findContours(threshold_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
-        #Bug fixing
-        #cv2.imshow("grayscale", grayscale_image)
-        #cv2.imshow("image", image)
-        #cv2.imshow("threshold image", threshold_image)
-
-        return contours
+    
 

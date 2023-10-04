@@ -16,40 +16,45 @@ class shape_detector:
             cv2.imshow("image", image)
             cv2.imshow("threshold image", threshold_image)
 
+        contours = contours[1:]
+
+
         return contours
     
     def evaluate_contours(self, contours):
-        shape_list = 0
-        shape = 0
-        
+
+        shapes = []
+        coordinates = []
+
         for i, contour in enumerate(contours):
-            if i == 0:
-                continue
-            
+        
             epsilon = 0.01 * cv2.arcLength(contour, True)
             approx = cv2.approxPolyDP(contour, epsilon, True)
 
             x, y, w, h = cv2.boundingRect(contour)
 
-            coords = (int(x + w/3), int(y + h/1.5)) 
+            #coords = (int(x + w/3), int(y + h/1.5)) 
+            coords = [int(x), int(y)]
+
 
             if len(approx) == 3:
-                shape = 'Triangle'
+                shape = "Triangle"
 
             elif len(approx) == 4:
-                print(w)
-                print(h)
+ 
                 aspect_ratio = float(w)/h
-                print(aspect_ratio)
                 if aspect_ratio > 1.1:
-                    shape = 'Rectangle'
+                    shape = "Rectangle"
                 else:
-                    shape = 'Square'
+                    shape = "Square"
 
             else:
-                shape = 'circle'
-                
-            shape_list[i][0] = shape
-            shape_list[i][1] = contour[i]
-            
-        return shape_list
+                shape = "Circle"
+
+                  
+            shapes.append(shape)
+            coordinates.append(coords)
+             
+          
+       #print("urgodman shapes: ", shapes)
+        return shapes, coordinates

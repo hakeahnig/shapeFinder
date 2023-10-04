@@ -28,7 +28,7 @@ class color_detector:
         hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
         # Create a blank image with the same dimensions as the original image
-        image_with_text = image.copy()
+        hsv_image = image.copy()
 
         #Color Definition
         #RED

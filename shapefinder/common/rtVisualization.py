@@ -35,6 +35,7 @@ class visualize:
                 if aspect_ratio > 1.1:
                     cv2.putText(image, "Rectangle", coords, self.font, 2, self.colour, 2)
                     log.log_to_csv(self.time, None, "Rectangle")
+                    
                 else:
                     cv2.putText(image, "Square", coords, self.font, 2, self.colour, 2)
                     log.log_to_csv(self.time, None, "Square")

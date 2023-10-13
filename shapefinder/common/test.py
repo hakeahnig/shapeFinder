@@ -8,10 +8,10 @@ import cv2
 
 
 #Creating Class Object
-base = detector('/home/madame/Documents/Semester 5/SOFENG/Project_1/shapeFinder/shapefinder/common/sample_image.JPG')
+base = detector('shapefinder/common/sample_image.JPG')
 
 #Calling Class Functions
 base.color_recognition()
 contours = base.shape_recognition()
-vis = visualize('/home/madame/Documents/Semester 5/SOFENG/Project_1/shapeFinder/shapefinder/common/sample_image.JPG', cv2.FONT_HERSHEY_PLAIN, (0, 255, 0))
+vis = visualize('shapefinder/common/sample_image.JPG', cv2.FONT_HERSHEY_PLAIN, (0, 255, 0))
 vis.combine_images(contours)

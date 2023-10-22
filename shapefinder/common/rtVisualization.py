@@ -36,8 +36,6 @@ class visualize:
             print("ur coordinates", coordinates[i][0], coordinates[i][1]+35)
             cv2.putText(image, colors[i], (coordinates[i][0], coordinates[i][1]+35), self.font, 3, self.colour, 4 )
 
-
-
     def draw_contours(self, image, contours):
         for i, contour in enumerate(contours):
             
@@ -53,6 +51,7 @@ class visualize:
          """
            
     def combine_images(self, contours, shapes, coordinates, colors):
+
         # Create a blank image with the dimensions as the original image
         combined_image = self.image.copy()
 

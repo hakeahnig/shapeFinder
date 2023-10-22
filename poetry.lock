@@ -21,11 +21,15 @@ test-no-images = ["pytest", "pytest-cov", "wurlitzer"]
 
 [[package]]
 name = "cycler"
-version = "0.11.0"
+version = "0.12.0"
 description = "Composable style cycles"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
+
+[package.extras]
+docs = ["ipython", "matplotlib", "numpydoc", "sphinx"]
+tests = ["pytest", "pytest-cov", "pytest-xdist"]
 
 [[package]]
 name = "datetime"
@@ -41,7 +45,7 @@ pytz = "*"
 
 [[package]]
 name = "fonttools"
-version = "4.42.1"
+version = "4.43.0"
 description = "Tools to manipulate font files"
 category = "main"
 optional = false
@@ -99,7 +103,7 @@ python-versions = "<3.13,>=3.9"
 
 [[package]]
 name = "opencv-python"
-version = "4.8.0.76"
+version = "4.8.1.78"
 description = "Wrapper package for OpenCV python bindings."
 category = "main"
 optional = false
@@ -117,7 +121,7 @@ numpy = [
 
 [[package]]
 name = "packaging"
-version = "23.1"
+version = "23.2"
 description = "Core utilities for Python packages"
 category = "main"
 optional = false

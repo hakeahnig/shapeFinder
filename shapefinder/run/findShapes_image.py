@@ -1,6 +1,7 @@
 import sys
 import os
 
+
 sys.path.append(os.path.abspath('./shapefinder'))
 
 #Importing Classes
@@ -28,3 +29,4 @@ print(colors)
 print(shapes)
 
 vis.combine_images(contours, shapes, coordinates, colors)
+

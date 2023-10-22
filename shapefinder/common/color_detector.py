@@ -31,11 +31,9 @@ class color_detector:
     
     def color_recognition(self, contours):
         # Extract colors from middle of shapes
-        image_hsv = cv2.cvtColor(self.image, cv2.COLOR_RGB2HSV)
         cv2.imshow("self image", self.image)
-        #cv2.imshow("image hsv", image_hsv)
         color_names = []
-        j = 0
+
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
 
@@ -48,19 +46,9 @@ class color_detector:
             color_name = 'no color found'
           
             for i in range(len(self.color_ranges)):
-                #print("Under Limit", self.color_ranges[i][1])
-                #print("Upper Limit", self.color_ranges[i][2])
-                #print('\n')
-
                 if self.color_ranges[i][1] <= color[0]*360 <= self.color_ranges[i][2]:
                     color_name = self.color_ranges[i][0]
-                    print("Color", self.color_ranges[i][0])
-                    print("Color Value", color[0]*360)
-                    print("COORDS", coords)
-                    print('\n')
 
-
-                
             color_names.append(color_name)
             
         return color_names

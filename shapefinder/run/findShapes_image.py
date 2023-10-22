@@ -1,7 +1,8 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath('.'))
+
+sys.path.append(os.path.abspath('./shapefinder'))
 
 #Importing Classes
 from common.color_detector import color_detector
@@ -13,14 +14,19 @@ from common.shape_detector import shape_detector
 import cv2
 
 #Creating Class Object
-image_path = '/home/madame/Documents/Semester 5/SOFENG/Project_1/shapeFinder/shapefinder/common/sample_image.JPG'
-base = color_detector(image_path)
-shape = shape_detector(image_path)
-vis = visualize(image_path, cv2.FONT_HERSHEY_PLAIN, (0, 0, 0))
+image_path = 'shapefinder/common/sample_image.JPG'
+image = cv2.imread(image_path)
+color_det = color_detector(image)
+shape = shape_detector(image)
+vis = visualize(image, cv2.FONT_HERSHEY_PLAIN, (0, 0, 0))
 
 #Calling Class Functions
-base.color_recognition()
 contours = shape.get_contours()
 shapes, coordinates = shape.evaluate_contours(contours)
-vis.combine_images(contours, shapes, coordinates)
+colors = color_det.color_recognition(contours)
+
+print(colors)
+print(shapes)
+
+vis.combine_images(contours, shapes, coordinates, colors)
 

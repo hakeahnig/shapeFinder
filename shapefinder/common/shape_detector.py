@@ -2,12 +2,11 @@ import cv2
 
 class shape_detector:
 
-    def __init__(self, image_path):
-        self.image_path = image_path
+    def __init__(self, image):
+        self.image = image
 
     def get_contours(self):
-        image = cv2.imread(self.image_path)
-        grayscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        grayscale_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         _, threshold_image = cv2.threshold(grayscale_image, 210, 255, 0)
         contours, _ = cv2.findContours(threshold_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 

@@ -31,6 +31,13 @@ class visualize:
 
         #cv2.imshow("shapes_detected", image)
 
+    def put_color_name_on_image(self, image, colors, coordinates, contours):
+        for i, contour in enumerate(contours):
+            print("ur coordinates", coordinates[i][0], coordinates[i][1]+35)
+            cv2.putText(image, colors[i], (coordinates[i][0], coordinates[i][1]+35), self.font, 3, self.colour, 4 )
+
+
+
     def draw_contours(self, image, contours):
         for i, contour in enumerate(contours):
             
@@ -45,13 +52,14 @@ class visualize:
             x, y, w, h = cv2.boundingRect(contour)
          """
            
-    def combine_images(self, contours, shapes, coordinates):
+    def combine_images(self, contours, shapes, coordinates, colors):
         # Create a blank image with the dimensions as the original image
         combined_image = self.image.copy()
 
         # Call the two functions to overlay their results on the same combined_image
         self.draw_contours(combined_image, contours)
         self.put_shape_on_image(combined_image, contours, shapes, coordinates)
+        self.put_color_name_on_image(combined_image, colors, coordinates, contours)
 
         # Show the combined image
         cv2.imshow("Combined Image", combined_image)

@@ -1,13 +1,28 @@
 import cv2
-
+import colorsys
 class color_detector:
     #Name, lower range, upper range
+    """    
     color_ranges = [['red', 0, 30],
                     ['yellow', 30, 60],
                     ['green', 60, 150],
                     ['blue', 150, 240],
                     ['purple', 240, 350]]
-     
+     """
+
+      
+    color_ranges = [['red', 0, 41],
+                    ['yellow', 41, 70],
+                    ['green', 71, 180],
+                    ['blue', 181, 280],
+                    ['purple', 260, 360]]
+
+    """    color_ranges = [['red', 0, 30],
+                    ['yellow', 31, 60],
+                    ['green', 61, 90],
+                    ['blue', 91, 150],
+                    ['purple', 151, 180]]"""
+
     def __init__(self, image, font=cv2.FONT_HERSHEY_DUPLEX, color=(0,255,0)):
         self.image = image
         self.font = font
@@ -17,20 +32,34 @@ class color_detector:
     def color_recognition(self, contours):
         # Extract colors from middle of shapes
         image_hsv = cv2.cvtColor(self.image, cv2.COLOR_RGB2HSV)
+        cv2.imshow("self image", self.image)
+        #cv2.imshow("image hsv", image_hsv)
         color_names = []
+        j = 0
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
+
             coords = (int(x+w/2), int(y+h/2))
-            color = image_hsv[coords[1], coords[0]]
-            
+
+            color = self.image[coords[1], coords[0]]
+
+            color = colorsys.rgb_to_hsv(color[2]/255, color[1]/255, color[0]/255)
+            print("color", color)
             color_name = 'no color found'
+          
             for i in range(len(self.color_ranges)):
-                print(self.color_ranges[i][1])
-                print(self.color_ranges[i][2])
-                print(color[0])
-                print('\n')
-                if self.color_ranges[i][1] <= color[0] <= self.color_ranges[i][2]:
+                #print("Under Limit", self.color_ranges[i][1])
+                #print("Upper Limit", self.color_ranges[i][2])
+                #print('\n')
+
+                if self.color_ranges[i][1] <= color[0]*360 <= self.color_ranges[i][2]:
                     color_name = self.color_ranges[i][0]
+                    print("Color", self.color_ranges[i][0])
+                    print("Color Value", color[0]*360)
+                    print("COORDS", coords)
+                    print('\n')
+
+
                 
             color_names.append(color_name)
             

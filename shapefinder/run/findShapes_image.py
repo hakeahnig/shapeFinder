@@ -23,6 +23,8 @@ vis = visualize(image, cv2.FONT_HERSHEY_PLAIN, (0, 0, 0))
 contours = shape.get_contours()
 shapes, coordinates = shape.evaluate_contours(contours)
 colors = color_det.color_recognition(contours)
+
 print(colors)
 print(shapes)
-vis.combine_images(contours, shapes, coordinates)
+
+vis.combine_images(contours, shapes, coordinates, colors)

@@ -1,6 +1,6 @@
 import cv2
 
-def read_image(self, cam_port):
+def open_camera(self, cam_port):
         cam = cv2.VideoCapture(cam_port)
         while True:
             ret, image = cam.read()

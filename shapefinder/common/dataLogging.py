@@ -3,12 +3,15 @@ import csv
 
 class logger():
     def __init__(self):
-        self.time  = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        pass
 
-    def log_to_csv(self, time, color, shape):
+    def log_to_csv(self, colors, shape):
         with open('logdata.csv', 'a', newline='', encoding='UTF8') as f:
             writer = csv.writer(f)
-            writer.writerow([time, color, shape])
+            time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            
+            for i in range(len(shape)):
+                writer.writerow([time, colors[i], shape[i]])
 
         
 

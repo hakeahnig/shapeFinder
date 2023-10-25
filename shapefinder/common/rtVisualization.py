@@ -62,6 +62,4 @@ class visualize:
 
         # Show the combined image
         cv2.imshow("Combined Image", combined_image)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows() 
 

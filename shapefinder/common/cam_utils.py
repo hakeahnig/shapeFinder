@@ -5,10 +5,10 @@ def open_camera(self, cam_port):
         while True:
             ret, image = cam.read()
 
-            if ret == True:
+            if ret is True:
                 cv2.imshow("VIDEO INPUT", image)
                 input_key = cv2.waitKey(20)
-                if input_key == ord("q"):
+                if input_key is ord("q"):
                     break
 
         cam.release()

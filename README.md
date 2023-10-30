@@ -86,3 +86,65 @@ The program is only calibrated for ideal light conditions and shape image qualit
 3. Shapes which aren't enitrely flat can rise issues and have a chance of not been properly evaluated.
 
 
+# Usage
+
+## Prerequisites
+
+Install Poetry as described in the [official installation documentation](https://python-poetry.org/docs/#installing-with-the-official-installer).
+
+If you don't own a practical camera for this application, you could use your phone as an external video input with [droidcam](https://www.dev47apps.com/).
+
+[Git](https://git-scm.com/) is recommended to easily grab all the neccessary project files in one go. 
+
+## Installation
+
+1. Clone this repository into your preferred location.
+2. Open a terminal and move to the origin of the previously downloaded repo.
+3. Activate the virtual python environment with poetry: 
+    ```vim
+    poetry shell
+    ```
+4. Install all the required dependencies with:
+    ```vim
+    poetry install
+    ```
+
+## Running with the example image
+
+While in the root of the folder, the program can be started with:
+```vim
+python3 shapefinder/run/find_shapes_image.py
+```
+
+## Running in realtime with external camera
+
+While in the root of the folder, the program can be started with:
+```vim
+python3 shapefinder/run/find_shapes_camera.py
+```
+
+## Changing the logfile location
+In both the find_shapes_image.py and the find_shapes_camera.py file, the log path can be changed by altering the following line of code:
+```vim
+LOG_PATH = "logs/logdata.csv"
+```
+
+## Tuning HSV ranges and adding colors
+In both the find_shapes_image.py and the find_shapes_camera.py file, the hsv ranges can be adjusted by finetuning the following values:
+```vim 
+COLOR_RANGES = [
+        ["red", 0, 41],
+        ["yellow", 41, 70],
+        ["green", 71, 180],
+        ["blue", 181, 280],
+        ["purple", 260, 360],
+    ]
+```
+It is also possible to add additional colors to this array.
+
+## Changing camera input
+
+If you have multiple video devices connected to your computer, you can select the right one with the following value:
+```vim
+DEVICE_ID = 0
+```

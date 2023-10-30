@@ -19,10 +19,11 @@ color_ranges = [
     ]
 
 # create objects
+LOG_PATH = "logs/logdata.csv"
 color_det = ColorDetector(color_ranges)
 shape = ShapeDetector()
 vis = Visualize(cv2.FONT_HERSHEY_PLAIN, (0, 0, 0))
-log = Logger()
+log = Logger(LOG_PATH)
 
 # open camera
 DEVICE_ID = 0
